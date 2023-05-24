@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: # kpt-merge: mydemo/default
+  name: default
+  namespace: mydemo
+  labels:
+    testlabel: value
+  annotations:
+    internal.kpt.dev/upstream-identifier: '|ConfigMap|mydemo|default'
+data:
+  testlabel: value

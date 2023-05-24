@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: # kpt-merge: mydemo/nginx-demo
+  name: nginx-demo
+  namespace: mydemo
+  labels:
+    testlabel: value
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'apps|Deployment|mydemo|nginx-demo'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app
+      testlabel: value
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app
+        testlabel: value
+    spec:
+      containers:
+      - name: main
+        image: nginx:latest
