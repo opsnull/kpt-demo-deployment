@@ -1,0 +1,22 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /cert-issuers
+  name: cert-issuers
+  annotations:
+    config.kubernetes.io/local-config: "true"
+    internal.kpt.dev/upstream-identifier: kpt.dev|Kptfile|default|cert-issuers
+upstream:
+  type: git
+  git:
+    repo: https://github.com/GoogleContainerTools/kpt-samples.git
+    directory: cert-issuers
+    ref: cert-issuers/v0
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/GoogleContainerTools/kpt-samples.git
+    directory: cert-issuers
+    ref: cert-issuers/v0
+    commit: a9532cd9a76da04ed64369044f4544ced50853cc
+info:
+  description: sample description
